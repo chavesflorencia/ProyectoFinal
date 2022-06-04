@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from paquetes.views import paquetes
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', paquetes, name = 'paquetes')
 ]
