@@ -1,20 +1,4 @@
 from django.db import models
-from django.core.exceptions import ValidationError
-from django.utils.translation import gettext_lazy as _
-
-def validate_pasaporte(value):
-    if value(len) != 8:
-        raise ValidationError(
-            _('%(value)s is not a valid passport/dni number'),
-            params={'value': value},
-        )
-
-def validate_telefono(value):
-    if value(len) != 8:
-        raise ValidationError(
-            _('%(value)s is not a valid telephone number'),
-            params={'value': value},
-        )
 
 # Create your models here.
 class paquete(models.Model):
@@ -31,11 +15,11 @@ class cliente(models.Model):
     id_user = models.IntegerField(unique=True)
     nombre = models.CharField(max_length=30)
     apellido = models.CharField(max_length=30)
-    pasaporte = models.IntegerField(validators=[validate_pasaporte])
+    pasaporte = models.IntegerField()
     vencimiento = models.DateField()
-    dni = models.IntegerField(validators=[validate_pasaporte])
+    dni = models.IntegerField()
     domicilio = models.CharField(max_length=40)
-    telefono = models.IntegerField(validators=[validate_telefono])
+    telefono = models.IntegerField()
 
 class user(models.Model):
     USER_TYPES = (
