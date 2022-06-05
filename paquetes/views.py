@@ -5,7 +5,7 @@ def paquetes(request):
     paquetes = paquete.objects.all()
     print(paquetes)
     context = {'paquetes': paquetes}
-    return render(request, "template_1.html", context = context) 
+    return render(request, "base.html", context = context) 
 
 def clientes(request):
     clientes = cliente.objects.all()
